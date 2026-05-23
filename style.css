@@ -1,0 +1,185 @@
+:root {
+  color-scheme: dark;
+  --ink: #f5f1df;
+  --muted: #b6c2aa;
+  --panel: rgba(13, 19, 22, 0.76);
+  --gold: #f4c542;
+  --sky-top: #223540;
+  --sky-bottom: #51635e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 70% 18%, rgba(245, 197, 66, 0.16), transparent 22rem),
+    linear-gradient(180deg, #11181c, #253437 55%, #151a1b);
+  color: var(--ink);
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+}
+
+.game-shell {
+  position: relative;
+  width: min(100vw, 1120px);
+  aspect-ratio: 16 / 9;
+  max-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--sky-top), var(--sky-bottom));
+  border: 4px solid #0a0f11;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+canvas:focus,
+body:focus {
+  outline: none;
+}
+
+.hud {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  pointer-events: none;
+}
+
+.hud > div {
+  min-width: 96px;
+  padding: 8px 10px;
+  background: var(--panel);
+  border: 2px solid rgba(245, 241, 223, 0.18);
+}
+
+.label {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.hud strong {
+  display: block;
+  margin-top: 4px;
+  color: var(--ink);
+  font-size: 19px;
+  line-height: 1;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 12px;
+  padding: 28px;
+  text-align: center;
+  background: rgba(7, 10, 12, 0.38);
+  pointer-events: none;
+}
+
+.overlay.clear {
+  background:
+    linear-gradient(rgba(6, 8, 9, 0.22), rgba(6, 8, 9, 0.58)),
+    url("assets/clear/clear-bg.png") center / cover no-repeat,
+    #1b1510;
+}
+
+.overlay.clear h1 {
+  font-size: clamp(28px, 4.8vw, 58px);
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay h1 {
+  margin: 0;
+  font-size: clamp(38px, 7vw, 86px);
+  line-height: 0.9;
+  text-shadow: 0 5px 0 #101616;
+}
+
+.overlay p {
+  margin: 0;
+  color: #f8e8a5;
+  font-size: clamp(15px, 2.2vw, 23px);
+  font-weight: 800;
+}
+
+.choices {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+.choices.hidden {
+  display: none;
+}
+
+.choices button {
+  min-width: 92px;
+  border: 2px solid rgba(245, 241, 223, 0.72);
+  background: rgba(12, 16, 18, 0.84);
+  color: var(--ink);
+  cursor: pointer;
+  font: 900 18px/1 "Segoe UI", system-ui, sans-serif;
+  padding: 12px 18px;
+}
+
+.choices button:hover {
+  background: rgba(244, 197, 66, 0.26);
+  border-color: var(--gold);
+}
+
+@media (max-width: 720px) {
+  .game-shell {
+    width: 100vw;
+    max-height: none;
+    border-width: 0;
+  }
+
+  .hud {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    gap: 6px;
+  }
+
+  .hud > div {
+    min-width: 0;
+    flex: 1;
+    padding: 7px 8px;
+  }
+
+  .hud strong {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cliff Runner Prototype</title>
+    <link rel="stylesheet" href="style.css?v=6" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <canvas id="game" width="960" height="540" aria-label="Cliff runner game"></canvas>
+      <section class="hud" aria-live="polite">
+        <div>
+          <span class="label">TIME</span>
+          <strong id="score">0</strong>
+        </div>
+        <div>
+          <span class="label">PIAGET WATCH</span>
+          <strong id="coins">0</strong>
+        </div>
+        <div>
+          <span class="label">SPEED</span>
+          <strong id="speed">1.0x</strong>
+        </div>
+      </section>
+      <section id="overlay" class="overlay">
+        <h1>CLIFF RUNNER</h1>
+        <p id="overlayText">Press SPACE to start and jump</p>
+        <div id="deathChoices" class="choices hidden">
+          <button id="deathYes" type="button">YES</button>
+          <button id="deathNo" type="button">NO</button>
+        </div>
+        <div id="pauseChoices" class="choices hidden">
+          <button id="pauseResume" type="button">RESUME</button>
+          <button id="pauseRestart" type="button">RESTART</button>
+        </div>
+      </section>
+    </main>
+    <script src="game.js?v=17"></script>
+  </body>
+</html>
